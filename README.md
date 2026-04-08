@@ -19,10 +19,6 @@ The answer: yes, but only with rigorous evaluation infrastructure. The LLM reads
 - Covers: resistors, capacitors, inductors, diodes, MOSFETs (Level 1/2/3, BSIM3), BJTs, JFETs, coupled inductors, transmission lines, all source types
 - Analysis modes: `.OP`, `.TRAN`, `.DC`, `.AC`, `.TF`, `.SENS`, `.PZ`
 
-## The Ferrite context
-
-spice-rs is a core component of [Ferrite](https://github.com/ferrite-systems), an open-source EDA platform built on a text-first philosophy using [KDL](https://kdl.dev) as its native file format. A pure-Rust engine means simulation runs anywhere Rust compiles: natively in the desktop editor, in CI pipelines, and in the browser via WebAssembly.
-
 ## Documentation
 
 The docs site at **[ferrite-systems.github.io/spice-rs](https://ferrite-systems.github.io/spice-rs/)** is an interactive textbook — every circuit diagram, simulation result, and waveform is computed live in your browser via the same WASM-compiled engine that passes the validation suite. No server, no pre-rendered images.
