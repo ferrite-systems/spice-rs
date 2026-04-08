@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="525" height="263" viewBox="0 0 300 150">
+  <style>
+    text { font-family: 'Crimson Pro', Georgia, serif; font-size: 12px; }
+    .label { fill: #6b5d4d; }
+    .annotation { fill: #4a6fa5; }
+    .wire { stroke: #3b2f20; stroke-width: 1.5; fill: none; }
+    .component { stroke: #b87333; stroke-width: 1.8; fill: none; }
+  </style>
+
+  <!-- NMOS Symbol -->
+  <text x="75" y="14" text-anchor="middle" class="annotation" font-size="13">NMOS</text>
+
+  <!-- Gate line (vertical bar) -->
+  <line x1="55" y1="40" x2="55" y2="110" class="component"/>
+  <!-- Gate wire -->
+  <line x1="20" y1="75" x2="55" y2="75" class="wire"/>
+  <!-- Gate label -->
+  <text x="16" y="79" text-anchor="end" class="label">G</text>
+
+  <!-- Channel segments (three stubs from bar to body) -->
+  <line x1="65" y1="45" x2="65" y2="65" class="component"/>
+  <line x1="65" y1="70" x2="65" y2="80" class="component"/>
+  <line x1="65" y1="85" x2="65" y2="105" class="component"/>
+
+  <!-- Drain wire (top) -->
+  <line x1="65" y1="45" x2="95" y2="45" class="wire"/>
+  <line x1="95" y1="20" x2="95" y2="45" class="wire"/>
+  <!-- Drain label -->
+  <text x="102" y="25" class="label">D</text>
+
+  <!-- Source wire (bottom) -->
+  <line x1="65" y1="105" x2="95" y2="105" class="wire"/>
+  <line x1="95" y1="105" x2="95" y2="130" class="wire"/>
+  <!-- Source label -->
+  <text x="102" y="130" class="label">S</text>
+
+  <!-- NMOS arrow on source (pointing inward toward channel) -->
+  <polygon points="65,105 75,101 75,109" fill="#b87333" stroke="none"/>
+
+  <!-- Bulk wire -->
+  <line x1="65" y1="75" x2="95" y2="75" class="wire"/>
+  <line x1="95" y1="75" x2="120" y2="75" class="wire"/>
+  <!-- Bulk label -->
+  <text x="124" y="79" class="label">B</text>
+
+  <!-- Body line (vertical connecting channel stubs) -->
+  <line x1="65" y1="40" x2="65" y2="110" stroke="#3b2f20" stroke-width="0.5" stroke-dasharray="1,3" fill="none"/>
+
+
+  <!-- PMOS Symbol -->
+  <text x="225" y="14" text-anchor="middle" class="annotation" font-size="13">PMOS</text>
+
+  <!-- Gate line (vertical bar) -->
+  <line x1="195" y1="40" x2="195" y2="110" class="component"/>
+  <!-- Gate bubble (circle for PMOS) -->
+  <circle cx="189" cy="75" r="5" class="component"/>
+  <!-- Gate wire -->
+  <line x1="170" y1="75" x2="184" y2="75" class="wire"/>
+  <!-- Gate label -->
+  <text x="166" y="79" text-anchor="end" class="label">G</text>
+
+  <!-- Channel segments -->
+  <line x1="205" y1="45" x2="205" y2="65" class="component"/>
+  <line x1="205" y1="70" x2="205" y2="80" class="component"/>
+  <line x1="205" y1="85" x2="205" y2="105" class="component"/>
+
+  <!-- Drain wire (top) -->
+  <line x1="205" y1="45" x2="235" y2="45" class="wire"/>
+  <line x1="235" y1="20" x2="235" y2="45" class="wire"/>
+  <!-- Drain label -->
+  <text x="242" y="25" class="label">D</text>
+
+  <!-- Source wire (bottom) -->
+  <line x1="205" y1="105" x2="235" y2="105" class="wire"/>
+  <line x1="235" y1="105" x2="235" y2="130" class="wire"/>
+  <!-- Source label -->
+  <text x="242" y="130" class="label">S</text>
+
+  <!-- PMOS arrow on source (pointing outward, away from channel) -->
+  <polygon points="75,105 65,101 65,109" fill="#b87333" stroke="none" transform="translate(140,0)"/>
+
+  <!-- Bulk wire -->
+  <line x1="205" y1="75" x2="235" y2="75" class="wire"/>
+  <line x1="235" y1="75" x2="260" y2="75" class="wire"/>
+  <!-- Bulk label -->
+  <text x="264" y="79" class="label">B</text>
+
+  <!-- Body line -->
+  <line x1="205" y1="40" x2="205" y2="110" stroke="#3b2f20" stroke-width="0.5" stroke-dasharray="1,3" fill="none"/>
+</svg>

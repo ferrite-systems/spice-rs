@@ -1,0 +1,17 @@
+[package]
+name = "spice-rs"
+version = "0.1.0"
+edition = "2024"
+license = "GPL-3.0-or-later"
+description = "SPICE circuit simulator — faithful ngspice port in Rust"
+
+[lib]
+path = "src/lib.rs"
+
+[dependencies]
+sparse-rs = { path = "../sparse-rs" }
+num-complex = "0.4"
+thiserror = "2"
+
+[dev-dependencies]
+approx = "0.5"

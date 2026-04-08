@@ -1,0 +1,119 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="875" height="350" viewBox="0 0 500 200">
+  <style>
+    text { font-family: 'Crimson Pro', Georgia, serif; font-size: 10px; }
+    .label { fill: #6b5d4d; }
+    .annotation { fill: #4a6fa5; }
+    .title { fill: #4a6fa5; font-size: 12px; font-weight: 600; }
+    .wire { stroke: #3b2f20; stroke-width: 1.5; fill: none; }
+    .component { stroke: #b87333; stroke-width: 1.8; fill: none; }
+  </style>
+
+  <defs>
+    <!-- n-type region pattern -->
+    <pattern id="ntype" width="6" height="6" patternUnits="userSpaceOnUse">
+      <rect width="6" height="6" fill="#c8daf0"/>
+      <circle cx="3" cy="3" r="0.5" fill="#4a6fa5" opacity="0.4"/>
+    </pattern>
+  </defs>
+
+  <!-- ====== CUTOFF ====== -->
+  <text x="80" y="14" text-anchor="middle" class="title">Cutoff</text>
+  <text x="80" y="26" text-anchor="middle" class="label" font-size="9">V_GS &lt; V_th</text>
+
+  <!-- P-substrate -->
+  <rect x="20" y="90" width="120" height="70" fill="#e8ddd0" stroke="#3b2f20" stroke-width="1"/>
+  <text x="80" y="178" text-anchor="middle" class="label" font-size="9">p-substrate</text>
+
+  <!-- Source n+ region -->
+  <rect x="25" y="90" width="30" height="25" fill="url(#ntype)" stroke="#3b2f20" stroke-width="0.8"/>
+  <text x="40" y="82" text-anchor="middle" class="label">S</text>
+  <text x="40" y="106" text-anchor="middle" class="annotation" font-size="8">n+</text>
+
+  <!-- Drain n+ region -->
+  <rect x="105" y="90" width="30" height="25" fill="url(#ntype)" stroke="#3b2f20" stroke-width="0.8"/>
+  <text x="120" y="82" text-anchor="middle" class="label">D</text>
+  <text x="120" y="106" text-anchor="middle" class="annotation" font-size="8">n+</text>
+
+  <!-- Oxide layer -->
+  <rect x="45" y="60" width="70" height="10" fill="#f5f0e8" stroke="#3b2f20" stroke-width="0.8"/>
+  <text x="138" y="68" class="label" font-size="8">oxide</text>
+
+  <!-- Gate metal -->
+  <rect x="48" y="42" width="64" height="18" fill="#b87333" opacity="0.7" stroke="#3b2f20" stroke-width="0.8"/>
+  <text x="80" y="38" text-anchor="middle" class="label">Gate</text>
+
+  <!-- No channel - just substrate between S and D -->
+  <!-- Depletion region hint (dashed) -->
+  <line x1="55" y1="90" x2="105" y2="90" stroke="#6b5d4d" stroke-width="0.5" stroke-dasharray="2,2"/>
+
+
+  <!-- ====== LINEAR ====== -->
+  <text x="250" y="14" text-anchor="middle" class="title">Linear</text>
+  <text x="250" y="26" text-anchor="middle" class="label" font-size="9">V_GS &gt; V_th, V_DS small</text>
+
+  <!-- P-substrate -->
+  <rect x="190" y="90" width="120" height="70" fill="#e8ddd0" stroke="#3b2f20" stroke-width="1"/>
+  <text x="250" y="178" text-anchor="middle" class="label" font-size="9">p-substrate</text>
+
+  <!-- Source n+ region -->
+  <rect x="195" y="90" width="30" height="25" fill="url(#ntype)" stroke="#3b2f20" stroke-width="0.8"/>
+  <text x="210" y="82" text-anchor="middle" class="label">S</text>
+  <text x="210" y="106" text-anchor="middle" class="annotation" font-size="8">n+</text>
+
+  <!-- Drain n+ region -->
+  <rect x="275" y="90" width="30" height="25" fill="url(#ntype)" stroke="#3b2f20" stroke-width="0.8"/>
+  <text x="290" y="82" text-anchor="middle" class="label">D</text>
+  <text x="290" y="106" text-anchor="middle" class="annotation" font-size="8">n+</text>
+
+  <!-- Channel (uniform, connecting S to D) -->
+  <rect x="225" y="90" width="50" height="8" fill="#c8daf0" stroke="#4a6fa5" stroke-width="0.6"/>
+  <text x="250" y="107" text-anchor="middle" class="annotation" font-size="8">channel</text>
+
+  <!-- Oxide layer -->
+  <rect x="215" y="60" width="70" height="10" fill="#f5f0e8" stroke="#3b2f20" stroke-width="0.8"/>
+
+  <!-- Gate metal -->
+  <rect x="218" y="42" width="64" height="18" fill="#b87333" opacity="0.7" stroke="#3b2f20" stroke-width="0.8"/>
+  <text x="250" y="38" text-anchor="middle" class="label">Gate</text>
+
+  <!-- Current arrows -->
+  <line x1="230" y1="94" x2="270" y2="94" stroke="#4a6fa5" stroke-width="0.8" marker-end="url(#arrowBlue)"/>
+  <defs>
+    <marker id="arrowBlue" markerWidth="6" markerHeight="4" refX="5" refY="2" orient="auto">
+      <polygon points="0 0, 6 2, 0 4" fill="#4a6fa5"/>
+    </marker>
+  </defs>
+
+
+  <!-- ====== SATURATION ====== -->
+  <text x="420" y="14" text-anchor="middle" class="title">Saturation</text>
+  <text x="420" y="26" text-anchor="middle" class="label" font-size="9">V_DS &gt; V_GS - V_th</text>
+
+  <!-- P-substrate -->
+  <rect x="360" y="90" width="120" height="70" fill="#e8ddd0" stroke="#3b2f20" stroke-width="1"/>
+  <text x="420" y="178" text-anchor="middle" class="label" font-size="9">p-substrate</text>
+
+  <!-- Source n+ region -->
+  <rect x="365" y="90" width="30" height="25" fill="url(#ntype)" stroke="#3b2f20" stroke-width="0.8"/>
+  <text x="380" y="82" text-anchor="middle" class="label">S</text>
+  <text x="380" y="106" text-anchor="middle" class="annotation" font-size="8">n+</text>
+
+  <!-- Drain n+ region -->
+  <rect x="445" y="90" width="30" height="25" fill="url(#ntype)" stroke="#3b2f20" stroke-width="0.8"/>
+  <text x="460" y="82" text-anchor="middle" class="label">D</text>
+  <text x="460" y="106" text-anchor="middle" class="annotation" font-size="8">n+</text>
+
+  <!-- Channel (pinched off near drain - tapered) -->
+  <path d="M395,90 L395,98 L435,96 L435,90 Z" fill="#c8daf0" stroke="#4a6fa5" stroke-width="0.6"/>
+  <text x="415" y="107" text-anchor="middle" class="annotation" font-size="8">pinch-off</text>
+
+  <!-- Pinch-off gap indicator -->
+  <line x1="437" y1="88" x2="443" y2="88" stroke="#b87333" stroke-width="1" stroke-dasharray="1,1"/>
+
+  <!-- Oxide layer -->
+  <rect x="385" y="60" width="70" height="10" fill="#f5f0e8" stroke="#3b2f20" stroke-width="0.8"/>
+
+  <!-- Gate metal -->
+  <rect x="388" y="42" width="64" height="18" fill="#b87333" opacity="0.7" stroke="#3b2f20" stroke-width="0.8"/>
+  <text x="420" y="38" text-anchor="middle" class="label">Gate</text>
+</svg>

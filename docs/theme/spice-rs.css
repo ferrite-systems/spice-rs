@@ -1,0 +1,645 @@
+/* spice-rs docs — Tufte-inspired warm design identity
+ *
+ * Palette:
+ *   Paper:    #faf4e8 (warm cream)
+ *   Ink:      #3b2f20 (dark brown)
+ *   Copper:   #b87333 (primary accent — signals, links, highlights)
+ *   Blue:     #4a6fa5 (secondary — code, second trace)
+ *   Red:      #a04040 (muted — errors, warnings, third trace)
+ *   Faint:    #e8dcc8 (rules, borders, grid lines)
+ *
+ * Typography:
+ *   Body:     Crimson Pro (serif, Tufte lineage — ET Book not on Google Fonts)
+ *   Code:     Iosevka (clean monospace)
+ *   Headings: Crimson Pro at heavier weight
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&display=swap');
+
+/* ── Light theme (primary) ── */
+
+.light, .rust {
+  --spice-paper:      #faf4e8;
+  --spice-paper-dark: #f0e8d4;
+  --spice-ink:        #3b2f20;
+  --spice-ink-light:  #6b5d4d;
+  --spice-copper:     #b87333;
+  --spice-copper-dim: #d4a06a;
+  --spice-blue:       #4a6fa5;
+  --spice-red:        #a04040;
+  --spice-faint:      #e8dcc8;
+  --spice-faint-dim:  #f2ead8;
+
+  --bg:               var(--spice-paper);
+  --fg:               var(--spice-ink);
+  --sidebar-bg:       var(--spice-paper-dark);
+  --sidebar-fg:       var(--spice-ink);
+  --sidebar-active:   var(--spice-copper);
+  --links:            var(--spice-copper);
+  --inline-code-color: var(--spice-blue);
+  --theme-popup-bg:   var(--spice-paper);
+  --theme-popup-border: var(--spice-faint);
+  --quote-bg:         var(--spice-faint-dim);
+  --quote-border:     var(--spice-copper-dim);
+  --table-border-color: var(--spice-faint);
+  --table-header-bg:  var(--spice-paper-dark);
+  --searchbar-border-color: var(--spice-faint);
+  --searchbar-bg:     var(--spice-paper);
+  --searchbar-fg:     var(--spice-ink);
+  --searchresults-header-fg: var(--spice-copper);
+  --searchresults-border-color: var(--spice-faint);
+}
+
+/* Force all themes to use light palette */
+.coal, .navy, .ayu, .rust {
+  --spice-paper:      #faf4e8;
+  --spice-paper-dark: #f0e8d4;
+  --spice-ink:        #3b2f20;
+  --spice-ink-light:  #6b5d4d;
+  --spice-copper:     #b87333;
+  --spice-copper-dim: #d4a06a;
+  --spice-blue:       #4a6fa5;
+  --spice-red:        #a04040;
+  --spice-faint:      #e8dcc8;
+  --spice-faint-dim:  #f2ead8;
+
+  --bg:               var(--spice-paper);
+  --fg:               var(--spice-ink);
+  --sidebar-bg:       var(--spice-paper-dark);
+  --sidebar-fg:       var(--spice-ink);
+  --sidebar-active:   var(--spice-copper);
+  --links:            var(--spice-copper);
+  --inline-code-color: var(--spice-blue);
+  --theme-popup-bg:   var(--spice-paper);
+  --theme-popup-border: var(--spice-faint);
+  --quote-bg:         var(--spice-faint-dim);
+  --quote-border:     var(--spice-copper-dim);
+  --table-border-color: var(--spice-faint);
+  --table-header-bg:  var(--spice-paper-dark);
+  --searchbar-border-color: var(--spice-faint);
+  --searchbar-bg:     var(--spice-paper);
+  --searchbar-fg:     var(--spice-ink);
+  --searchresults-header-fg: var(--spice-copper);
+  --searchresults-border-color: var(--spice-faint);
+}
+
+/* ── Typography ── */
+
+body, .content {
+  font-family: 'Crimson Pro', 'Georgia', serif;
+  font-size: 19px;
+  line-height: 1.65;
+  color: var(--fg);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Crimson Pro', 'Georgia', serif;
+  font-weight: 600;
+  color: var(--fg);
+  letter-spacing: -0.01em;
+}
+
+h1 {
+  font-size: 2.2em;
+  font-weight: 700;
+  margin-top: 1em;
+  margin-bottom: 0.4em;
+  border-bottom: 2px solid var(--spice-copper);
+  padding-bottom: 0.2em;
+}
+
+h2 {
+  font-size: 1.6em;
+  margin-top: 1.8em;
+  margin-bottom: 0.3em;
+  border-bottom: 1px solid var(--spice-faint);
+  padding-bottom: 0.15em;
+}
+
+h3 {
+  font-size: 1.25em;
+  margin-top: 1.5em;
+  color: var(--spice-ink-light);
+}
+
+p {
+  margin-bottom: 1.1em;
+}
+
+/* ── Links ── */
+
+a {
+  color: var(--spice-copper);
+  text-decoration: none;
+  border-bottom: 1px solid var(--spice-copper-dim);
+  transition: border-color 0.15s;
+}
+
+a:hover {
+  border-bottom-color: var(--spice-copper);
+}
+
+/* ── Code ── */
+
+code {
+  font-family: 'Iosevka', 'Iosevka Web', 'Fira Code', 'Source Code Pro', monospace;
+  font-size: 0.85em;
+  background: var(--spice-faint-dim);
+  padding: 0.1em 0.35em;
+  border-radius: 3px;
+  color: var(--spice-blue);
+}
+
+pre {
+  background: var(--spice-paper-dark) !important;
+  border: 1px solid var(--spice-faint);
+  border-radius: 4px;
+  padding: 1em 1.2em;
+  overflow-x: auto;
+  line-height: 1.5;
+}
+
+pre code {
+  background: none;
+  padding: 0;
+  color: var(--fg);
+  font-size: 0.82em;
+}
+
+/* ── Content width — Tufte-style wide measure ── */
+
+.content main {
+  max-width: 780px;
+}
+
+/* ── Tables — clean, minimal ── */
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1.5em 0;
+  font-size: 0.92em;
+}
+
+thead {
+  border-bottom: 2px solid var(--spice-copper-dim);
+}
+
+th {
+  font-weight: 600;
+  text-align: left;
+  padding: 0.5em 0.75em;
+  color: var(--fg);
+}
+
+td {
+  padding: 0.45em 0.75em;
+  border-bottom: 1px solid var(--spice-faint);
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+/* ── Blockquotes — margin note style ── */
+
+blockquote {
+  border-left: 3px solid var(--spice-copper-dim);
+  background: var(--spice-faint-dim);
+  padding: 0.6em 1em;
+  margin: 1em 0;
+  font-style: italic;
+  color: var(--spice-ink-light);
+}
+
+blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+/* ── Horizontal rules ── */
+
+hr {
+  border: none;
+  border-top: 1px solid var(--spice-faint);
+  margin: 2em 0;
+}
+
+/* ── Sidebar refinements ── */
+
+.sidebar {
+  font-size: 0.88em;
+  line-height: 1.5;
+}
+
+.sidebar .sidebar-scrollbox {
+  background: var(--spice-paper-dark);
+}
+
+.sidebar a {
+  border-bottom: none;
+}
+
+.sidebar a.active {
+  color: var(--spice-copper);
+  font-weight: 600;
+}
+
+/* ── Part titles in sidebar ── */
+
+.sidebar .chapter li.part-title {
+  font-weight: 700;
+  font-size: 0.95em;
+  color: var(--sidebar-fg);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 1.2em;
+  padding-top: 0.6em;
+  border-top: 1px solid var(--spice-faint);
+}
+
+/* ── Navigation arrows ── */
+
+.nav-wrapper {
+  margin-top: 3em;
+}
+
+.nav-chapters {
+  font-family: 'Crimson Pro', serif;
+  color: var(--spice-copper);
+}
+
+/* ── Simulation widget containers ── */
+
+.spice-sim-container {
+  background: var(--spice-paper-dark);
+  border: 1px solid var(--spice-faint);
+  border-radius: 6px;
+  padding: 1.2em;
+  margin: 1.5em 0;
+  display: flex;
+  gap: 1.2em;
+}
+
+.spice-sim-container .netlist-editor {
+  flex: 1;
+  min-width: 0;
+}
+
+.spice-sim-container .sim-output {
+  flex: 1;
+  min-width: 0;
+}
+
+.spice-sim-container textarea {
+  font-family: 'Iosevka', 'Fira Code', monospace;
+  font-size: 0.82em;
+  background: var(--bg);
+  color: var(--fg);
+  border: 1px solid var(--spice-faint);
+  border-radius: 3px;
+  padding: 0.8em;
+  width: 100%;
+  min-height: 180px;
+  resize: vertical;
+  line-height: 1.5;
+}
+
+.spice-sim-container button.run-btn {
+  font-family: 'Crimson Pro', serif;
+  font-size: 0.9em;
+  font-weight: 600;
+  background: var(--spice-copper);
+  color: var(--bg);
+  border: none;
+  border-radius: 4px;
+  padding: 0.4em 1.2em;
+  cursor: pointer;
+  margin-top: 0.5em;
+  transition: background 0.15s;
+}
+
+.spice-sim-container button.run-btn:hover {
+  background: var(--fg);
+  color: var(--bg);
+}
+
+/* ── Hide theme toggle — light only ── */
+
+#theme-toggle,
+#mdbook-theme-toggle,
+.theme-popup,
+#mdbook-theme-list {
+  display: none !important;
+}
+
+/* ── Ferrite circuit diagrams (from preprocessor) ── */
+
+.ferrite-circuit {
+  margin: 1em auto;
+  text-align: center;
+}
+
+.ferrite-circuit svg {
+  display: inline-block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* ── Interactive ferrite-circuit widget (WASM-rendered) ── */
+
+.ferrite-circuit-widget {
+  margin: 1.5em 0;
+  border: 1px solid var(--spice-faint);
+  border-radius: 6px;
+  background: var(--spice-faint-dim);
+  padding: 1em 1.2em;
+}
+
+.ferrite-circuit-widget .ferrite-circuit-svg {
+  text-align: center;
+}
+
+.ferrite-circuit-widget .ferrite-circuit-svg svg {
+  display: inline-block;
+  max-width: 100%;
+  height: auto;
+}
+
+.ferrite-loading {
+  color: var(--spice-ink-light);
+  font-style: italic;
+  padding: 1.5em 0;
+}
+
+/* Bottom panel: controls + run + results in a row */
+.ferrite-circuit-panel {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 0.6em 1.5em;
+  border-top: 1px solid var(--spice-faint);
+  padding-top: 0.6em;
+  margin-top: 0.5em;
+}
+
+/* Parameter controls — inline */
+.ferrite-circuit-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.3em 1em;
+}
+
+.ferrite-circuit-controls:empty {
+  display: none;
+}
+
+.param-row {
+  display: flex;
+  align-items: center;
+  gap: 0.3em;
+}
+
+.param-row label {
+  font-family: 'Iosevka', 'Fira Code', monospace;
+  font-size: 0.82em;
+  font-weight: 600;
+  color: var(--spice-copper);
+}
+
+.param-input {
+  font-family: 'Iosevka', 'Fira Code', monospace;
+  font-size: 0.82em;
+  width: 5em;
+  padding: 0.15em 0.35em;
+  border: 1px solid var(--spice-faint);
+  border-radius: 3px;
+  background: var(--bg);
+  color: var(--fg);
+}
+
+/* Actions — inline with params */
+.ferrite-circuit-actions {
+  display: inline;
+}
+
+/* Results — full width row below */
+.ferrite-circuit-widget .sim-output {
+  flex-basis: 100%;
+}
+
+.ferrite-circuit-widget .sim-output:empty {
+  display: none;
+}
+
+.ferrite-circuit-widget .sim-results-table {
+  font-size: 0.85em;
+  margin: 0;
+}
+
+/* Collapsible netlist — full width */
+.ferrite-circuit-netlist {
+  flex-basis: 100%;
+}
+
+.ferrite-circuit-netlist details {
+  margin: 0;
+}
+
+.ferrite-circuit-netlist summary {
+  cursor: pointer;
+  font-size: 0.85em;
+  color: var(--spice-ink-light);
+  user-select: none;
+}
+
+.ferrite-circuit-netlist pre {
+  font-size: 0.78em;
+  max-height: 140px;
+  overflow-y: auto;
+  margin-top: 0.3em;
+}
+
+.ferrite-circuit-error {
+  color: var(--spice-red);
+  font-style: italic;
+  padding: 1em;
+  border: 1px dashed var(--spice-red);
+  border-radius: 4px;
+  margin: 1.5em 0;
+}
+
+/* ── Legacy circuit diagram containers (manual JSON renderer) ── */
+
+.circuit-diagram {
+  margin: 1.5em 0;
+  text-align: center;
+}
+
+.circuit-diagram svg {
+  max-width: 100%;
+  height: auto;
+}
+
+.circuit-diagram svg text {
+  font-family: 'Crimson Pro', serif;
+  font-size: 13px;
+  fill: var(--fg);
+}
+
+.circuit-diagram svg .component-label {
+  font-style: italic;
+  font-size: 12px;
+  fill: var(--spice-ink-light);
+}
+
+.circuit-diagram svg .wire {
+  stroke: var(--fg);
+  stroke-width: 1.5;
+  fill: none;
+}
+
+.circuit-diagram svg .component {
+  stroke: var(--spice-copper);
+  stroke-width: 1.8;
+  fill: none;
+}
+
+.circuit-diagram svg .node-dot {
+  fill: var(--fg);
+}
+
+.circuit-diagram svg .voltage-label {
+  fill: var(--spice-blue);
+  font-size: 11px;
+}
+
+.circuit-diagram svg .current-arrow {
+  stroke: var(--spice-red);
+  fill: var(--spice-red);
+  stroke-width: 1.2;
+}
+
+/* ── Plot containers ── */
+
+.spice-plot {
+  margin: 1.5em 0;
+  background: var(--bg);
+  border: 1px solid var(--spice-faint);
+  border-radius: 4px;
+  padding: 1em;
+}
+
+.spice-plot canvas {
+  width: 100%;
+  height: auto;
+}
+
+/* ── Equation cards ── */
+
+.equation-card {
+  background: var(--spice-paper-dark);
+  border-left: 3px solid var(--spice-copper);
+  padding: 0.8em 1.2em;
+  margin: 1.5em 0;
+  border-radius: 0 4px 4px 0;
+}
+
+.equation-card .katex {
+  font-size: 1.1em;
+}
+
+.equation-card .eq-label {
+  font-family: 'Crimson Pro', serif;
+  font-size: 0.8em;
+  color: var(--spice-ink-light);
+  float: right;
+  margin-top: 0.3em;
+}
+
+/* ── Matrix visualizer ── */
+
+.matrix-grid {
+  display: inline-grid;
+  gap: 1px;
+  background: var(--spice-faint);
+  border: 1px solid var(--spice-faint);
+  border-radius: 3px;
+  margin: 1em auto;
+  font-family: 'Iosevka', monospace;
+  font-size: 0.78em;
+}
+
+.matrix-grid .cell {
+  background: var(--bg);
+  padding: 0.3em 0.5em;
+  text-align: right;
+  min-width: 4em;
+  color: var(--fg);
+}
+
+.matrix-grid .cell.nonzero {
+  background: var(--spice-faint-dim);
+  color: var(--fg);
+}
+
+.matrix-grid .cell.zero {
+  color: var(--spice-faint);
+}
+
+.matrix-grid .cell.highlight {
+  background: var(--spice-faint);
+  color: var(--spice-copper);
+  font-weight: 600;
+}
+
+/* ── Responsive ── */
+
+@media (max-width: 700px) {
+  .spice-sim-container {
+    flex-direction: column;
+  }
+
+  body, .content {
+    font-size: 17px;
+  }
+
+  h1 { font-size: 1.8em; }
+  h2 { font-size: 1.35em; }
+}
+
+/* ── Reduced motion ── */
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* ── Print ── */
+
+@media print {
+  body, .content {
+    color: #000;
+    background: #fff;
+    font-size: 11pt;
+  }
+
+  .spice-sim-container,
+  .circuit-diagram svg .current-arrow {
+    break-inside: avoid;
+  }
+
+  a {
+    color: #000;
+    border-bottom: none;
+  }
+
+  a[href]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+    color: #666;
+  }
+}

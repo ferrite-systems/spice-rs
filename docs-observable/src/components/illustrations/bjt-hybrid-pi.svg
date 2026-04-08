@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="613" height="350" viewBox="0 0 350 200">
+  <style>
+    text { font-family: 'Crimson Pro', Georgia, serif; font-size: 11px; }
+    .label { fill: #6b5d4d; }
+    .annotation { fill: #4a6fa5; }
+    .wire { stroke: #3b2f20; stroke-width: 1.5; fill: none; }
+    .component { stroke: #b87333; stroke-width: 1.8; fill: none; }
+  </style>
+
+  <!-- Terminal labels -->
+  <text x="10" y="64" class="label" font-size="13">B</text>
+  <text x="330" y="64" class="label" font-size="13">C</text>
+  <text x="168" y="195" text-anchor="middle" class="label" font-size="13">E</text>
+
+  <!-- Top rail: B node to junction, then to C node -->
+  <!-- B wire in -->
+  <line x1="20" y1="60" x2="50" y2="60" class="wire"/>
+  <!-- Junction at B-internal -->
+  <circle cx="50" cy="60" r="2" fill="#3b2f20"/>
+
+  <!-- C wire out -->
+  <line x1="290" y1="60" x2="325" y2="60" class="wire"/>
+  <!-- Junction at C-internal -->
+  <circle cx="290" cy="60" r="2" fill="#3b2f20"/>
+
+  <!-- Bottom rail (E node) -->
+  <line x1="50" y1="170" x2="290" y2="170" class="wire"/>
+  <!-- Junction points on E rail -->
+  <circle cx="50" cy="170" r="2" fill="#3b2f20"/>
+  <circle cx="170" cy="170" r="2" fill="#3b2f20"/>
+  <circle cx="230" cy="170" r="2" fill="#3b2f20"/>
+  <circle cx="290" cy="170" r="2" fill="#3b2f20"/>
+
+  <!-- E wire out (down) -->
+  <line x1="170" y1="170" x2="170" y2="188" class="wire"/>
+
+
+  <!-- === C_mu (B to C, across top) === -->
+  <line x1="50" y1="60" x2="50" y2="40" class="wire"/>
+  <line x1="50" y1="40" x2="155" y2="40" class="wire"/>
+  <!-- Cap plates -->
+  <line x1="155" y1="35" x2="155" y2="45" class="component" stroke-width="1.5"/>
+  <line x1="161" y1="35" x2="161" y2="45" class="component" stroke-width="1.5"/>
+  <line x1="161" y1="40" x2="290" y2="40" class="wire"/>
+  <line x1="290" y1="40" x2="290" y2="60" class="wire"/>
+  <!-- Label -->
+  <text x="158" y="30" text-anchor="middle" class="annotation">C_mu</text>
+
+
+  <!-- === r_pi (B to E, left side) === -->
+  <!-- Wire down from B -->
+  <line x1="50" y1="60" x2="50" y2="82" class="wire"/>
+  <!-- Resistor zigzag (vertical) -->
+  <polyline points="50,82 43,87 57,95 43,103 57,111 43,119 57,127 50,132" class="component"/>
+  <!-- Wire to E -->
+  <line x1="50" y1="132" x2="50" y2="170" class="wire"/>
+  <!-- Label -->
+  <text x="30" y="110" text-anchor="end" class="annotation">r_pi</text>
+
+  <!-- v_be label -->
+  <text x="62" y="152" class="label" font-size="9">v_be</text>
+  <line x1="58" y1="145" x2="58" y2="158" stroke="#6b5d4d" stroke-width="0.6"/>
+  <text x="55" y="144" class="label" font-size="8">+</text>
+  <text x="55" y="163" class="label" font-size="8">-</text>
+
+
+  <!-- === C_pi (parallel to r_pi) === -->
+  <line x1="50" y1="82" x2="85" y2="82" class="wire"/>
+  <line x1="85" y1="82" x2="85" y2="103" class="wire"/>
+  <!-- Cap plates (vertical orientation) -->
+  <line x1="80" y1="103" x2="90" y2="103" class="component" stroke-width="1.5"/>
+  <line x1="80" y1="109" x2="90" y2="109" class="component" stroke-width="1.5"/>
+  <line x1="85" y1="109" x2="85" y2="132" class="wire"/>
+  <line x1="85" y1="132" x2="50" y2="132" class="wire"/>
+  <!-- Label -->
+  <text x="96" y="109" class="annotation">C_pi</text>
+
+
+  <!-- === gm*vbe current source (C to E, center) === -->
+  <line x1="170" y1="60" x2="170" y2="82" class="wire"/>
+  <!-- Current source: circle with arrow -->
+  <circle cx="170" cy="115" r="18" class="component"/>
+  <!-- Arrow inside (pointing up = current from E to C) -->
+  <line x1="170" y1="126" x2="170" y2="106" stroke="#b87333" stroke-width="1.5"/>
+  <polygon points="170,106 165,114 175,114" fill="#b87333" stroke="none"/>
+  <!-- Wire down to E -->
+  <line x1="170" y1="133" x2="170" y2="170" class="wire"/>
+  <!-- Wire up to top rail -->
+  <line x1="170" y1="60" x2="170" y2="97" class="wire"/>
+  <!-- Label -->
+  <text x="170" y="145" text-anchor="middle" class="annotation" font-size="10">g_m v_be</text>
+
+  <!-- Junction on top rail at gm -->
+  <circle cx="170" cy="60" r="2" fill="#3b2f20"/>
+  <!-- Connect B-internal to C-internal through top rail -->
+  <line x1="50" y1="60" x2="290" y2="60" class="wire"/>
+
+
+  <!-- === ro (C to E, right side) === -->
+  <line x1="290" y1="60" x2="290" y2="82" class="wire"/>
+  <!-- Resistor zigzag (vertical) -->
+  <polyline points="290,82 283,87 297,95 283,103 297,111 283,119 297,127 290,132" class="component"/>
+  <!-- Wire to E -->
+  <line x1="290" y1="132" x2="290" y2="170" class="wire"/>
+  <!-- Label -->
+  <text x="305" y="110" class="annotation">r_o</text>
+
+  <!-- Title -->
+  <text x="170" y="16" text-anchor="middle" class="annotation" font-size="12">Hybrid-Pi Small-Signal Model</text>
+</svg>

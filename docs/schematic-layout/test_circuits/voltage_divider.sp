@@ -1,0 +1,5 @@
+Voltage Divider
+V1 1 0 DC 10
+R1 1 2 10k
+R2 2 0 10k
+.END

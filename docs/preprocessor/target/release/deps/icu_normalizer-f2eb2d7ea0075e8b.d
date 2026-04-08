@@ -1,0 +1,10 @@
+/Users/kpwferrite/workspace/sim/spice-rs/docs/preprocessor/target/release/deps/icu_normalizer-f2eb2d7ea0075e8b.d: /Users/kpwferrite/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/icu_normalizer-2.2.0/src/lib.rs /Users/kpwferrite/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/icu_normalizer-2.2.0/src/properties.rs /Users/kpwferrite/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/icu_normalizer-2.2.0/src/provider.rs /Users/kpwferrite/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/icu_normalizer-2.2.0/src/uts46.rs
+
+/Users/kpwferrite/workspace/sim/spice-rs/docs/preprocessor/target/release/deps/libicu_normalizer-f2eb2d7ea0075e8b.rlib: /Users/kpwferrite/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/icu_normalizer-2.2.0/src/lib.rs /Users/kpwferrite/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/icu_normalizer-2.2.0/src/properties.rs /Users/kpwferrite/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/icu_normalizer-2.2.0/src/provider.rs /Users/kpwferrite/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/icu_normalizer-2.2.0/src/uts46.rs
+
+/Users/kpwferrite/workspace/sim/spice-rs/docs/preprocessor/target/release/deps/libicu_normalizer-f2eb2d7ea0075e8b.rmeta: /Users/kpwferrite/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/icu_normalizer-2.2.0/src/lib.rs /Users/kpwferrite/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/icu_normalizer-2.2.0/src/properties.rs /Users/kpwferrite/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/icu_normalizer-2.2.0/src/provider.rs /Users/kpwferrite/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/icu_normalizer-2.2.0/src/uts46.rs
+
+/Users/kpwferrite/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/icu_normalizer-2.2.0/src/lib.rs:
+/Users/kpwferrite/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/icu_normalizer-2.2.0/src/properties.rs:
+/Users/kpwferrite/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/icu_normalizer-2.2.0/src/provider.rs:
+/Users/kpwferrite/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/icu_normalizer-2.2.0/src/uts46.rs:

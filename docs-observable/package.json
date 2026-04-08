@@ -1,0 +1,14 @@
+{
+  "name": "spice-rs-docs",
+  "version": "0.1.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "observable preview",
+    "build": "observable build",
+    "deploy": "observable deploy"
+  },
+  "dependencies": {
+    "@observablehq/framework": "^1.13.4"
+  }
+}

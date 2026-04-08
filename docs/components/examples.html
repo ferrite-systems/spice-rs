@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>spice-rs Circuit Symbols &mdash; Test Page</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper:    #faf4e8;
+      --ink:      #3b2f20;
+      --copper:   #b87333;
+      --blue:     #4a6fa5;
+      --red:      #a04040;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'Crimson Pro', Georgia, serif;
+      padding: 2rem;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    h1 { font-size: 1.6rem; font-weight: 700; margin-bottom: .25rem; }
+    h2 { font-size: 1.2rem; font-weight: 600; margin-top: 2rem; margin-bottom: .5rem; color: var(--copper); }
+    p  { margin-bottom: 1rem; line-height: 1.5; }
+    .circuit-box {
+      border: 1px solid #d4c9b0;
+      border-radius: 4px;
+      padding: 1rem;
+      margin-bottom: 2rem;
+      background: rgba(255,255,255,0.35);
+    }
+    .circuit-box svg { display: block; margin: 0 auto; }
+
+    /* Symbol gallery */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      gap: 1.2rem;
+      margin-bottom: 2rem;
+    }
+    .gallery-item {
+      text-align: center;
+      padding: .75rem;
+      border: 1px solid #d4c9b0;
+      border-radius: 4px;
+      background: rgba(255,255,255,0.3);
+    }
+    .gallery-item svg { display: block; margin: 0 auto .4rem; }
+    .gallery-item span {
+      font-size: .85rem;
+      color: var(--ink);
+    }
+  </style>
+</head>
+<body>
+
+<h1>spice-rs Circuit Symbol Library</h1>
+<p>Component symbols and circuit renderer test page.</p>
+
+<!-- ====== Symbol gallery ====== -->
+<h2>Symbol Gallery</h2>
+<div class="gallery" id="gallery"></div>
+
+<!-- ====== Voltage divider circuit ====== -->
+<h2>Voltage Divider (V1 + R1 + R2)</h2>
+<div class="circuit-box" id="divider"></div>
+
+<!-- ====== NMOS common-source ====== -->
+<h2>NMOS Common-Source Amplifier</h2>
+<div class="circuit-box" id="nmos-amp"></div>
+
+<!-- ====== Scripts ====== -->
+<script src="circuit-renderer.js"></script>
+<script>
+/* ---------------------------------------------------------------
+   1. Symbol gallery — show each symbol standalone
+   --------------------------------------------------------------- */
+(function() {
+  const gallery = document.getElementById("gallery");
+  const symbols = [
+    ["resistor",        60, 24],
+    ["capacitor",       40, 24],
+    ["inductor",        60, 20],
+    ["voltage-source",  40, 60],
+    ["current-source",  40, 60],
+    ["diode",           40, 24],
+    ["nmos",            44, 60],
+    ["pmos",            48, 60],
+    ["npn",             44, 60],
+    ["pnp",             44, 60],
+    ["ground",          24, 20],
+    ["node-dot",         8,  8],
+  ];
+  for (const [id, w, h] of symbols) {
+    const div = document.createElement("div");
+    div.className = "gallery-item";
+    const scale = Math.min(80 / w, 60 / h, 1.5);
+    const sw = Math.round(w * scale);
+    const sh = Math.round(h * scale);
+    div.innerHTML =
+      `<svg width="${sw}" height="${sh}" viewBox="0 0 ${w} ${h}" xmlns="http://www.w3.org/2000/svg" color="#b87333">` +
+      `<use href="symbols.svg#${id}" width="${w}" height="${h}"/>` +
+      `</svg>` +
+      `<span>${id}</span>`;
+    gallery.appendChild(div);
+  }
+})();
+
+/* ---------------------------------------------------------------
+   2. Voltage divider circuit
+
+   Layout (terminal positions computed from SYMBOL_META):
+     V1 at (60,40): pos=(80,40), neg=(80,100)
+     R1 at (120,28): left=(120,40), right=(180,40)
+     R2 at (120,88): left=(120,100), right=(180,100)
+     GND at (68,110): top=(80,110)
+   --------------------------------------------------------------- */
+(function() {
+  const circuit = {
+    components: [
+      { id: "V1",   type: "voltage-source", x: 60,  y: 40,  orient: "vertical",
+        label: "V1", value: "10V", labelOffset: { x: -48, y: 18 } },
+      { id: "R1",   type: "resistor",       x: 120, y: 28,  orient: "horizontal",
+        label: "R1", value: "10k\u2126", labelOffset: { x: 14, y: -12 } },
+      { id: "R2",   type: "resistor",       x: 120, y: 88,  orient: "horizontal",
+        label: "R2", value: "10k\u2126", labelOffset: { x: 14, y: -12 } },
+      { id: "GND1", type: "ground",         x: 68,  y: 110, orient: "vertical" },
+    ],
+    wires: [
+      // V1.pos (80,40) right to R1.left (120,40)
+      { from: null, to: null, path: [[80, 40], [120, 40]] },
+      // R1.right (180,40) down to R2.right (180,100)
+      { from: null, to: null, path: [[180, 40], [210, 40], [210, 100], [180, 100]] },
+      // R2.left (120,100) left to V1.neg (80,100)
+      { from: null, to: null, path: [[120, 100], [80, 100]] },
+      // V1.neg (80,100) down to GND.top (80,110)
+      { from: null, to: null, path: [[80, 100], [80, 110]] },
+    ],
+    dots: [
+      [80, 40],    // top node (in)
+      [80, 100],   // bottom node
+      [210, 70],   // mid node (right side between R1 and R2)
+    ],
+    annotations: [
+      { type: "voltage", x: 218, y: 74, text: "Vmid = 5V" },
+    ],
+  };
+  renderCircuit(circuit, document.getElementById("divider"), {
+    symbolsUrl: "symbols.svg",
+    padding: 20,
+  });
+})();
+
+/* ---------------------------------------------------------------
+   3. NMOS common-source amplifier (simple)
+
+   Layout (terminal positions):
+     VDD at (130,10): pos=(150,10), neg=(150,70)
+     RD at (120,80) rotated vertical:
+       resistor native = horizontal 60x24, terminals left=(0,12) right=(60,12)
+       rotated 90CW: symbol drawn as 24x60 (w/h swapped visually)
+       terminal left→top, right→bottom
+       For rotated: need to use terminalWorld() logic
+       Actually let's just use horizontal resistor and connect with wires.
+
+     Better approach: keep RD horizontal and use wires to connect vertically.
+     Even better: just draw VDD as a label, use wire for power rail.
+
+   Simplified layout:
+     M1(nmos) at (120,130): gate=(120,160), drain=(154,130), source=(154,190)
+     RD(resistor) at (124,90) horiz: left=(124,102), right=(184,102)
+     VIN(vsource) at (20,130): pos=(40,130), neg=(40,190)
+     Connect: VDD rail at top, drain wire up to RD, RD up to VDD
+   --------------------------------------------------------------- */
+(function() {
+  const circuit = {
+    components: [
+      { id: "M1",   type: "nmos",           x: 120, y: 120, orient: "vertical",
+        label: "M1", value: "", labelOffset: { x: 48, y: 30 } },
+      { id: "RD",   type: "resistor",       x: 124, y: 68,  orient: "horizontal",
+        label: "RD", value: "1k\u2126", labelOffset: { x: -44, y: -4 } },
+      { id: "VIN",  type: "voltage-source", x: 20,  y: 120, orient: "vertical",
+        label: "Vin", value: "1V", labelOffset: { x: 44, y: 18 } },
+      { id: "GND1", type: "ground",         x: 142, y: 192, orient: "vertical" },
+      { id: "GND2", type: "ground",         x: 28,  y: 192, orient: "vertical" },
+    ],
+    wires: [
+      // M1.drain (154,120) up to RD.right (184,80) via corner
+      { from: null, to: null, path: [[154, 120], [154, 80], [184, 80]] },
+      // RD.left (124,80) up to VDD rail
+      { from: null, to: null, path: [[124, 80], [100, 80], [100, 30], [154, 30], [154, 30]] },
+      // M1.source (154,180) down to GND1.top (154,192)
+      { from: null, to: null, path: [[154, 180], [154, 192]] },
+      // VIN.pos (40,120) right to M1.gate (120,150)
+      { from: null, to: null, path: [[40, 120], [70, 120], [70, 150], [120, 150]] },
+      // VIN.neg (40,180) down to GND2.top (40,192)
+      { from: null, to: null, path: [[40, 180], [40, 192]] },
+    ],
+    dots: [
+      [154, 80],   // drain / Vout node
+    ],
+    annotations: [
+      { type: "voltage", x: 100, y: 24, text: "VDD = 5V" },
+      { type: "voltage", x: 162, y: 76, text: "Vout" },
+    ],
+  };
+  renderCircuit(circuit, document.getElementById("nmos-amp"), {
+    symbolsUrl: "symbols.svg",
+    padding: 20,
+  });
+})();
+</script>
+
+</body>
+</html>

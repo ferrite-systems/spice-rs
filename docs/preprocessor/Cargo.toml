@@ -1,0 +1,14 @@
+[workspace]
+
+[package]
+name = "mdbook-spice-sim"
+version = "0.1.0"
+edition = "2024"
+description = "mdbook preprocessor: ```spice-sim → sim widgets, ```ferrite-circuit → interactive KDL widgets"
+
+[[bin]]
+name = "mdbook-spice-sim"
+path = "src/main.rs"
+
+[dependencies]
+serde_json = "1"

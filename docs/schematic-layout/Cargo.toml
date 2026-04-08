@@ -1,0 +1,15 @@
+[workspace]
+
+[package]
+name = "schematic-layout"
+version = "0.1.0"
+edition = "2024"
+description = "SPICE netlist → auto-placed schematic → SVG"
+
+[lib]
+name = "schematic_layout"
+path = "src/lib.rs"
+
+[[bin]]
+name = "schem"
+path = "src/main.rs"

@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="613" height="350" viewBox="0 0 350 200">
+  <style>
+    text { font-family: 'Crimson Pro', Georgia, serif; font-size: 11px; }
+    .label { fill: #6b5d4d; }
+    .annotation { fill: #4a6fa5; }
+    .wire { stroke: #3b2f20; stroke-width: 1.5; fill: none; }
+    .component { stroke: #b87333; stroke-width: 1.8; fill: none; }
+  </style>
+
+  <!-- Terminal labels -->
+  <text x="10" y="64" class="label" font-size="13">G</text>
+  <text x="330" y="64" class="label" font-size="13">D</text>
+  <text x="168" y="195" text-anchor="middle" class="label" font-size="13">S</text>
+
+  <!-- Top rail: G to D -->
+  <!-- G wire in -->
+  <line x1="20" y1="60" x2="50" y2="60" class="wire"/>
+  <circle cx="50" cy="60" r="2" fill="#3b2f20"/>
+
+  <!-- D wire out -->
+  <line x1="290" y1="60" x2="325" y2="60" class="wire"/>
+  <circle cx="290" cy="60" r="2" fill="#3b2f20"/>
+
+  <!-- Horizontal connection along top -->
+  <line x1="50" y1="60" x2="290" y2="60" class="wire"/>
+
+  <!-- Bottom rail (S node) -->
+  <line x1="50" y1="170" x2="290" y2="170" class="wire"/>
+  <circle cx="50" cy="170" r="2" fill="#3b2f20"/>
+  <circle cx="170" cy="170" r="2" fill="#3b2f20"/>
+  <circle cx="290" cy="170" r="2" fill="#3b2f20"/>
+
+  <!-- S wire out (down) -->
+  <line x1="170" y1="170" x2="170" y2="188" class="wire"/>
+
+  <!-- Junction at gm top -->
+  <circle cx="170" cy="60" r="2" fill="#3b2f20"/>
+
+
+  <!-- === Cgs (G to S, left side) === -->
+  <line x1="50" y1="60" x2="50" y2="103" class="wire"/>
+  <!-- Cap plates (horizontal) -->
+  <line x1="44" y1="103" x2="56" y2="103" class="component" stroke-width="1.5"/>
+  <line x1="44" y1="109" x2="56" y2="109" class="component" stroke-width="1.5"/>
+  <line x1="50" y1="109" x2="50" y2="170" class="wire"/>
+  <!-- Label -->
+  <text x="32" y="109" text-anchor="end" class="annotation">C_gs</text>
+
+  <!-- v_gs label -->
+  <text x="64" y="130" class="label" font-size="9">v_gs</text>
+  <line x1="60" y1="120" x2="60" y2="145" stroke="#6b5d4d" stroke-width="0.6"/>
+  <text x="57" y="120" class="label" font-size="8">+</text>
+  <text x="57" y="150" class="label" font-size="8">-</text>
+
+
+  <!-- === Cgd (G to D, across top) === -->
+  <line x1="50" y1="60" x2="50" y2="40" class="wire"/>
+  <line x1="50" y1="40" x2="155" y2="40" class="wire"/>
+  <!-- Cap plates -->
+  <line x1="155" y1="35" x2="155" y2="45" class="component" stroke-width="1.5"/>
+  <line x1="161" y1="35" x2="161" y2="45" class="component" stroke-width="1.5"/>
+  <line x1="161" y1="40" x2="290" y2="40" class="wire"/>
+  <line x1="290" y1="40" x2="290" y2="60" class="wire"/>
+  <!-- Label -->
+  <text x="158" y="30" text-anchor="middle" class="annotation">C_gd</text>
+
+
+  <!-- === gm*vgs current source (D to S, center) === -->
+  <line x1="170" y1="60" x2="170" y2="97" class="wire"/>
+  <!-- Current source: circle with arrow -->
+  <circle cx="170" cy="115" r="18" class="component"/>
+  <!-- Arrow inside (pointing up = current from S to D) -->
+  <line x1="170" y1="126" x2="170" y2="106" stroke="#b87333" stroke-width="1.5"/>
+  <polygon points="170,106 165,114 175,114" fill="#b87333" stroke="none"/>
+  <!-- Wire down to S -->
+  <line x1="170" y1="133" x2="170" y2="170" class="wire"/>
+  <!-- Label -->
+  <text x="170" y="148" text-anchor="middle" class="annotation" font-size="10">g_m v_gs</text>
+
+
+  <!-- === gds (D to S, right side) === -->
+  <line x1="290" y1="60" x2="290" y2="82" class="wire"/>
+  <!-- Resistor zigzag (vertical) -->
+  <polyline points="290,82 283,87 297,95 283,103 297,111 283,119 297,127 290,132" class="component"/>
+  <!-- Wire to S -->
+  <line x1="290" y1="132" x2="290" y2="170" class="wire"/>
+  <!-- Label -->
+  <text x="305" y="110" class="annotation">g_ds</text>
+
+  <!-- Title -->
+  <text x="170" y="16" text-anchor="middle" class="annotation" font-size="12">MOSFET Small-Signal Model</text>
+</svg>

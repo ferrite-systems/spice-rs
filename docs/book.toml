@@ -1,0 +1,29 @@
+[book]
+title = "spice-rs"
+description = "A faithful ngspice port in Rust — interactive guide to how SPICE works"
+authors = ["Kevin Webb"]
+language = "en"
+src = "src"
+
+[build]
+build-dir = "../../target/docs/spice-rs"
+extra-watch-dirs = ["wasm", "components"]
+
+[output.html]
+default-theme = "light"
+preferred-dark-theme = "light"
+git-repository-url = "https://github.com/nickvdyck/spice-rs"
+additional-css = ["theme/spice-rs.css"]
+additional-js = ["theme/spice-rs.js"]
+mathjax-support = false
+
+[output.html.fold]
+enable = true
+level = 1
+
+[preprocessor.spice-sim]
+after = ["links"]
+
+[preprocessor.katex]
+after = ["links", "spice-sim"]
+no-css = false
