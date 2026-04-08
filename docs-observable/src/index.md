@@ -7,6 +7,38 @@ toc: true
 
 A faithful port of [ngspice](https://ngspice.sourceforge.io/) in Rust — with every simulation on this site running in your browser via WebAssembly.
 
+```js
+import {kdlToSvg, SimBuilder, setWasmUrl} from "./components/spice.js";
+setWasmUrl(FileAttachment("./wasm/spice_rs_wasm_bg.wasm").href);
+import {Resistance, Voltage, formatSpice, formatEE} from "./components/ee-inputs.js";
+import {simPanel} from "./components/readout.js";
+```
+
+Try it — drag the resistor values and watch the simulated ${tex`V_{mid}`} update:
+
+```js
+const r1 = view(Resistance({label: "R1", value: 1000}));
+const r2 = view(Resistance({label: "R2", value: 1000}));
+```
+
+```js
+const dividerKdl = `circuit "Voltage Divider" {
+    group "divider" {
+        component "R1" type="resistor" { value "${formatSpice(r1)}"; port "1" net="vin"; port "2" net="vmid"; place col=0 row=0 }
+        component "R2" type="resistor" { value "${formatSpice(r2)}"; port "1" net="vmid"; port "2" net="gnd"; place col=0 row=2 }
+    }
+    node "vin" role="supply" voltage="10" label="VDD"
+    node "gnd" role="ground"
+    node "vmid" label="Vmid"
+}`;
+const dividerSim = await SimBuilder.fromKdl(dividerKdl)
+  .op()
+  .measure("Vmid", "voltage", "vmid")
+  .withSvg()
+  .run();
+display(simPanel(dividerSim));
+```
+
 ---
 
 ## Why this project exists
@@ -36,38 +68,6 @@ The site is built with [Observable Framework](https://observablehq.com/framework
 ### WASM-based simulator
 
 The same Rust SPICE engine that passes the validation suite is compiled to WebAssembly and loaded client-side. There is no server — when you drag a slider and change a component value, the simulation re-runs entirely in your browser. A `SimBuilder` API separates circuit topology from simulation instrumentation — the same circuit can be analyzed as a DC operating point, AC frequency sweep, or transient step response without changing the circuit description. The builder generates a SPICE netlist internally, runs spice-rs in WASM, and returns structured results that [Observable Plot](https://observablehq.com/plot/) renders as interactive charts.
-
-Try it — drag the resistor values and watch the simulated ${tex`V_{mid}`} update:
-
-```js
-import {kdlToSvg, SimBuilder, setWasmUrl} from "./components/spice.js";
-setWasmUrl(FileAttachment("./wasm/spice_rs_wasm_bg.wasm").href);
-import {Resistance, Voltage, formatSpice, formatEE} from "./components/ee-inputs.js";
-import {simPanel} from "./components/readout.js";
-```
-
-```js
-const r1 = view(Resistance({label: "R1", value: 1000}));
-const r2 = view(Resistance({label: "R2", value: 1000}));
-```
-
-```js
-const dividerKdl = `circuit "Voltage Divider" {
-    group "divider" {
-        component "R1" type="resistor" { value "${formatSpice(r1)}"; port "1" net="vin"; port "2" net="vmid"; place col=0 row=0 }
-        component "R2" type="resistor" { value "${formatSpice(r2)}"; port "1" net="vmid"; port "2" net="gnd"; place col=0 row=2 }
-    }
-    node "vin" role="supply" voltage="10" label="VDD"
-    node "gnd" role="ground"
-    node "vmid" label="Vmid"
-}`;
-const dividerSim = await SimBuilder.fromKdl(dividerKdl)
-  .op()
-  .measure("Vmid", "voltage", "vmid")
-  .withSvg()
-  .run();
-display(simPanel(dividerSim));
-```
 
 ### Automated circuit rendering
 
