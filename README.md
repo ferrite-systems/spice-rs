@@ -15,7 +15,7 @@ The answer: yes, but only with rigorous evaluation infrastructure. The LLM reads
 ## Status
 
 - **199 / 226** validation circuits passing against ngspice (abs=0.01, rel=0.01)
-- **176** of those match at machine precision (~1e-14)
+- **176** of those are bit-identical to ngspice output
 - Covers: resistors, capacitors, inductors, diodes, MOSFETs (Level 1/2/3, BSIM3), BJTs, JFETs, coupled inductors, transmission lines, all source types
 - Analysis modes: `.OP`, `.TRAN`, `.DC`, `.AC`, `.TF`, `.SENS`, `.PZ`
 

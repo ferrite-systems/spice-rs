@@ -23,7 +23,7 @@ Getting to bit-identical required building an **evaluation harness** that could 
 
 The pattern that emerged: the human designs the testing infrastructure and diagnoses root causes; the LLM does the high-volume translation and mechanical refactoring. Neither could do this alone. The LLM cannot reason about numerical correctness at the precision required, and a human cannot economically translate hundreds of thousands of lines of C by hand.
 
-As of the latest eval run, spice-rs passes 199 of 226 validation circuits against ngspice at strict tolerances (abs=0.01, rel=0.01), with 176 of those matching at machine precision (~1e-14). The port covers resistors, capacitors, inductors, diodes, MOSFETs (Level 1/2/3 and BSIM3), BJTs, JFETs, coupled inductors, transmission lines, all source types, and all major analysis modes (.OP, .TRAN, .DC, .AC, .TF, .SENS, .PZ).
+As of the latest eval run, spice-rs passes 199 of 226 validation circuits against ngspice at strict tolerances (abs=0.01, rel=0.01), with 176 of those bit-identical to ngspice output. The port covers resistors, capacitors, inductors, diodes, MOSFETs (Level 1/2/3 and BSIM3), BJTs, JFETs, coupled inductors, transmission lines, all source types, and all major analysis modes (.OP, .TRAN, .DC, .AC, .TF, .SENS, .PZ).
 
 ### The Ferrite context
 
