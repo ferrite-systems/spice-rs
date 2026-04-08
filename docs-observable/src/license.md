@@ -11,9 +11,11 @@ spice-rs is a faithful port of [ngspice](https://ngspice.sourceforge.io/) to Rus
 
 ## spice-rs
 
-**License:** [GPL-3.0-or-later](https://www.gnu.org/licenses/gpl-3.0.html)
+spice-rs is original Rust code, but the algorithms it implements are direct translations of C code from ngspice and SuiteSparse. Each section of spice-rs is licensed to match its upstream source:
 
-spice-rs is original Rust code, but the algorithms it implements are direct translations of C code from ngspice and SuiteSparse. The GPL-3.0 license applies to the spice-rs source as a whole.
+- **BSD-3-Clause** — the majority of spice-rs (device models, analysis algorithms), derived from ngspice's BSD-licensed code. See `LICENSE-BSD`.
+- **MIT** — sparse matrix code derived from Sparse 1.3 (Kundert). See `LICENSE-MIT`.
+- **LGPL-2.1-or-later** — applies to the sparse-rs dependency (derived from SuiteSparse KLU/BTF) when distributed as a linked binary.
 
 ---
 
@@ -118,10 +120,9 @@ The Markowitz pivot search and sparse factorization algorithms in both ngspice a
 
 | Component | License | Obligation |
 |---|---|---|
-| **spice-rs** | GPL-3.0-or-later | Copyleft: source must accompany distribution |
-| **ngspice algorithms** | Modified BSD | Attribution required in source and binary distributions |
-| **Sparse 1.3 algorithms** | MIT | Attribution required in source distributions |
-| **sparse-rs** | LGPL-2.1-or-later | sparse-rs source must be available (satisfied by GPL-3.0+) |
+| **spice-rs** (most code) | BSD-3-Clause | Attribution in source and binary distributions |
+| **Sparse matrix code** | MIT | Attribution in source distributions |
+| **sparse-rs** (dependency) | LGPL-2.1-or-later | sparse-rs source must be available when distributing linked binaries |
 
 ---
 

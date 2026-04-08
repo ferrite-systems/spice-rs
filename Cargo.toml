@@ -2,7 +2,7 @@
 name = "spice-rs"
 version = "0.1.0"
 edition = "2024"
-license = "GPL-3.0-or-later"
+license = "BSD-3-Clause AND MIT"
 description = "SPICE circuit simulator — faithful ngspice port in Rust"
 
 [lib]

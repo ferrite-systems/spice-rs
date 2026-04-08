@@ -7,7 +7,8 @@ project are derived from the ngspice source code and its upstream
 ancestors. This file documents the origins, licenses, and contributors
 of all upstream projects from which spice-rs derives.
 
-spice-rs itself is licensed under GPL-3.0-or-later.
+spice-rs is licensed under BSD-3-Clause and MIT, matching the upstream
+sources from which it derives. See LICENSE-BSD and LICENSE-MIT.
 
 
 ================================================================================
@@ -158,9 +159,8 @@ SUMMARY OF LICENSES APPLICABLE TO SPICE-RS
 
   Component              License              Obligation
   ---------------------  -------------------  ----------------------------------
-  spice-rs               GPL-3.0-or-later     Copyleft; source must be provided
-  ngspice algorithms     Modified BSD         Attribution in source & binary
-  Sparse 1.3 algorithms  MIT                  Attribution in source
+  spice-rs (most code)   BSD-3-Clause         Attribution in source & binary
+  Sparse matrix code     MIT                  Attribution in source
   sparse-rs dependency   LGPL-2.1-or-later    Source of sparse-rs must be
-                                              available; spice-rs satisfies
-                                              this by being GPL-3.0+
+                                              available when distributing
+                                              linked binaries

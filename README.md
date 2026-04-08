@@ -30,6 +30,10 @@ The site covers:
 
 ## License
 
-spice-rs is licensed under **GPL-3.0-or-later**.
+spice-rs uses the license that matches each upstream source:
 
-The algorithms are derived from ngspice (Modified BSD) and SuiteSparse (BSD-3-Clause / LGPL-2.1). See [NOTICES](NOTICES) for full upstream attribution, license texts, and the ngspice contributor list.
+- **BSD-3-Clause** — spice-rs source code (derived from ngspice, BSD-licensed). See [LICENSE-BSD](LICENSE-BSD).
+- **MIT** — Sparse matrix algorithms (derived from Sparse 1.3 by K. Kundert). See [LICENSE-MIT](LICENSE-MIT).
+- **LGPL-2.1-or-later** — sparse-rs dependency (derived from SuiteSparse KLU/BTF).
+
+See [NOTICES](NOTICES) for full upstream attribution, license texts, and the ngspice contributor list.
