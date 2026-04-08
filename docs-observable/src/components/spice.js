@@ -9,7 +9,7 @@ async function ensureEngine() {
   if (!initPromise) {
     initPromise = (async () => {
       // Fetch WASM binary from static file, pass as ArrayBuffer
-      const response = await fetch("/_file/wasm/spice_rs_wasm_bg.wasm");
+      const response = await fetch(import.meta.resolve("../wasm/spice_rs_wasm_bg.wasm"));
       const bytes = await response.arrayBuffer();
       await initWasm({module_or_path: bytes});
       engine = new SimulationEngine();

@@ -1,6 +1,7 @@
 export default {
   title: "spice-rs",
   root: "src",
+  base: "/spice-rs/",
   theme: "light",
   search: true,
   toc: true,
