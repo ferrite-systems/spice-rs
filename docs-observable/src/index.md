@@ -25,14 +25,6 @@ The pattern that emerged: the human designs the testing infrastructure and diagn
 
 As of the latest eval run, spice-rs passes 199 of 226 validation circuits against ngspice at strict tolerances (abs=0.01, rel=0.01), with 176 of those bit-identical to ngspice output. The port covers resistors, capacitors, inductors, diodes, MOSFETs (Level 1/2/3 and BSIM3), BJTs, JFETs, coupled inductors, transmission lines, all source types, and all major analysis modes (.OP, .TRAN, .DC, .AC, .TF, .SENS, .PZ).
 
-### The Ferrite context
-
-spice-rs is a core component of Ferrite, an open-source EDA platform built on a text-first philosophy. Ferrite uses [KDL](https://kdl.dev) as its native file format — human-readable, diff-friendly, and designed for version control.
-
-Having a pure-Rust SPICE engine means simulation can run anywhere Rust compiles: natively in the desktop editor, in CI pipelines for automated design checks, and — as this site demonstrates — in the browser via WebAssembly. No C dependencies, no FFI, no server round-trips.
-
-The long-term goal is for Ferrite to provide physics-aware design guidance as you draw a schematic: live operating point annotations, automated design rule checks grounded in actual simulation, and interactive parameter sweeps that update in real time. spice-rs is the engine that makes that possible.
-
 ---
 
 ## How this site works
