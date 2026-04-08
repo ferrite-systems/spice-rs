@@ -3,13 +3,17 @@ import initWasm, { SimulationEngine } from "./spice_rs_wasm.js";
 
 let engine = null;
 let initPromise = null;
+let wasmUrl = null;
+
+// Must be called before any simulation, with the URL from FileAttachment.
+export function setWasmUrl(url) { wasmUrl = url; }
 
 async function ensureEngine() {
   if (engine) return engine;
   if (!initPromise) {
     initPromise = (async () => {
-      // Fetch WASM binary from static file, pass as ArrayBuffer
-      const response = await fetch(import.meta.resolve("../wasm/spice_rs_wasm_bg.wasm"));
+      if (!wasmUrl) throw new Error("Call setWasmUrl() with FileAttachment URL before using spice.js");
+      const response = await fetch(wasmUrl);
       const bytes = await response.arrayBuffer();
       await initWasm({module_or_path: bytes});
       engine = new SimulationEngine();

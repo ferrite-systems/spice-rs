@@ -48,7 +48,8 @@ The same Rust SPICE engine that passes the validation suite is compiled to WebAs
 Try it — drag the resistor values and watch the simulated ${tex`V_{mid}`} update:
 
 ```js
-import {kdlToSvg, SimBuilder} from "./components/spice.js";
+import {kdlToSvg, SimBuilder, setWasmUrl} from "./components/spice.js";
+setWasmUrl(FileAttachment("./wasm/spice_rs_wasm_bg.wasm").href);
 import {Resistance, Voltage, formatSpice, formatEE} from "./components/ee-inputs.js";
 import {simPanel} from "./components/readout.js";
 ```
